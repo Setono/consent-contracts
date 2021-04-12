@@ -145,7 +145,7 @@ jobs:
                     dependency-versions: "${{ matrix.dependencies }}"
 
             -   name: "Run phpunit"
-                run: "composer phpunit"
+                run: "vendor/bin/phpunit"
 
     mutation-tests:
         name: "Mutation tests"
