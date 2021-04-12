@@ -1,1 +1,1 @@
-# consent-contracts
+# Abstraction for consent related implementations

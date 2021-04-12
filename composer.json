@@ -1,0 +1,45 @@
+{
+    "name": "setono/consent-contracts",
+    "type": "library",
+    "description": "Generic abstraction related to consent",
+    "keywords": [
+        "consent",
+        "gdpr"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.4",
+        "setono/client-id-contracts": "^0.1",
+        "webmozart/assert": "^1.10"
+    },
+    "require-dev": {
+        "infection/infection": "^0.21.5",
+        "phpunit/phpunit": "^9.5",
+        "psalm/plugin-phpunit": "^0.15.1",
+        "setono/code-quality-pack": "^2.1"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Setono\\Consent\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Setono\\Consent\\": "tests/"
+        }
+    },
+    "prefer-stable": true,
+    "scripts": {
+        "analyse": "psalm",
+        "check-style": "ecs check src/ tests/",
+        "fix-style": "ecs check src/ tests/ --fix"
+    }
+}
