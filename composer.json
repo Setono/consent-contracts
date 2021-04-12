@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": ">=7.4",
+        "ext-json": "*",
         "setono/client-id-contracts": "^0.1",
         "webmozart/assert": "^1.10"
     },
