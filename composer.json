@@ -10,7 +10,7 @@
     "require": {
         "php": ">=7.4",
         "ext-json": "*",
-        "setono/client-id-contracts": "^0.1",
+        "setono/client-id-contracts": "^0.1 || ^0.2",
         "webmozart/assert": "^1.10"
     },
     "require-dev": {
