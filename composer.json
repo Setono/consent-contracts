@@ -10,13 +10,13 @@
     "require": {
         "php": ">=7.4",
         "ext-json": "*",
-        "setono/client-id-contracts": "^0.1",
+        "setono/client-id-contracts": "^0.2",
         "webmozart/assert": "^1.10"
     },
     "require-dev": {
-        "infection/infection": "^0.21.5",
+        "infection/infection": "^0.23.0",
         "phpunit/phpunit": "^9.5",
-        "psalm/plugin-phpunit": "^0.15.1",
+        "psalm/plugin-phpunit": "^0.16.0",
         "setono/code-quality-pack": "^2.1"
     },
     "config": {
