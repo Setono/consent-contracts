@@ -11,13 +11,31 @@ final class DefaultConsentContext implements ConsentContextInterface
 {
     private ClientIdProviderInterface $clientIdProvider;
 
-    public function __construct(ClientIdProviderInterface $clientIdProvider)
-    {
+    private bool $marketingGranted;
+
+    private bool $preferencesGranted;
+
+    private bool $statisticsGranted;
+
+    public function __construct(
+        ClientIdProviderInterface $clientIdProvider,
+        bool $marketingGranted = false,
+        bool $preferencesGranted = false,
+        bool $statisticsGranted = false
+    ) {
         $this->clientIdProvider = $clientIdProvider;
+        $this->marketingGranted = $marketingGranted;
+        $this->preferencesGranted = $preferencesGranted;
+        $this->statisticsGranted = $statisticsGranted;
     }
 
     public function getConsent(): Consent
     {
-        return new Consent($this->clientIdProvider->getClientId(), false, false, false);
+        return new Consent(
+            $this->clientIdProvider->getClientId(),
+            $this->marketingGranted,
+            $this->preferencesGranted,
+            $this->statisticsGranted
+        );
     }
 }
