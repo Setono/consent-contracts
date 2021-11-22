@@ -19,6 +19,10 @@ final class ConsentUpdatedTest extends TestCase
     public function it_is_initializable(): void
     {
         new ConsentUpdated(new Consent(new ClientId('client_id'), true, true, true));
+        new ConsentUpdated(
+            new Consent(new ClientId('client_id'), true, true, true),
+            new Consent(new ClientId('client_id'), false, false, false)
+        );
 
         self::assertTrue(true);
     }
