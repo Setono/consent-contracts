@@ -6,6 +6,26 @@
 [![Code Coverage][ico-code-coverage]][link-code-coverage]
 [![Mutation testing][ico-infection]][link-infection]
 
+## Install
+
+```shell
+composer require setono/consent-contracts
+```
+
+## Usage
+
+```php
+<?php
+use Setono\ClientId\ClientId;
+use Setono\Consent\Consent;
+
+$consent = new Consent(new ClientId('your client id'), true, true, true);
+
+$consent->isMarketingConsentGranted(); // true
+$consent->isPreferencesConsentGranted(); // true
+$consent->isStatisticsConsentGranted(); // true
+```
+
 [ico-version]: https://poser.pugx.org/setono/consent-contracts/v/stable
 [ico-license]: https://poser.pugx.org/setono/consent-contracts/license
 [ico-github-actions]: https://github.com/Setono/consent-contracts/workflows/build/badge.svg
