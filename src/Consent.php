@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Setono\Consent;
 
+use JsonSerializable;
 use Setono\ClientId\ClientId;
 use Webmozart\Assert\Assert;
 
-final class Consent implements \JsonSerializable
+final class Consent implements JsonSerializable
 {
     public const CONSENT_MARKETING = 'marketing';
 
