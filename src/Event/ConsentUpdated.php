@@ -11,10 +11,10 @@ use Setono\Consent\Consent;
  */
 final class ConsentUpdated
 {
-    /** @psalm-readonly */
+    /** @readonly */
     public Consent $newConsent;
 
-    /** @psalm-readonly */
+    /** @readonly */
     public ?Consent $oldConsent;
 
     public function __construct(Consent $newConsent, Consent $oldConsent = null)
