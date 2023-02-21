@@ -19,7 +19,7 @@ final class GrantAllConsentCheckerTest extends TestCase
     }
 
     /**
-     * @return list<list<string>>
+     * @return list<array{0: string}>
      */
     public function getAllConsents(): array
     {
