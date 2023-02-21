@@ -8,10 +8,7 @@
         "gdpr"
     ],
     "require": {
-        "php": ">=7.4",
-        "ext-json": "*",
-        "setono/client-id-contracts": "^0.2",
-        "webmozart/assert": "^1.10"
+        "php": ">=7.4"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
