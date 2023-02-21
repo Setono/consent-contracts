@@ -4,7 +4,8 @@
 [![Software License][ico-license]](LICENSE)
 [![Build Status][ico-github-actions]][link-github-actions]
 [![Code Coverage][ico-code-coverage]][link-code-coverage]
-[![Mutation testing][ico-infection]][link-infection]
+
+This library serves as a building block for handling consent related implementations in your library or application.
 
 ## Install
 
@@ -16,23 +17,37 @@ composer require setono/consent-contracts
 
 ```php
 <?php
-use Setono\ClientId\ClientId;
-use Setono\Consent\Consent;
+use Setono\Consent\Consents;
+use Setono\Consent\ConsentCheckerInterface;
 
-$consent = new Consent(new ClientId('your client id'), true, true, true);
-
-$consent->isMarketingConsentGranted(); // true
-$consent->isPreferencesConsentGranted(); // true
-$consent->isStatisticsConsentGranted(); // true
+final class YourService
+{
+    private ConsentCheckerInterface $consentChecker;
+    
+    public function __construct(ConsentCheckerInterface $consentChecker)
+    {
+        $this->consentChecker = $consentChecker;    
+    }
+    
+    public function __invoke()
+    {
+        if ($this->consentChecker->isGranted(Consents::CONSENT_MARKETING)) {
+            // marketing consent is granted, and you can set your marketing related cookie ;)
+        }
+    }
+}
 ```
+
+## Default consent checkers
+
+This library also provides two implementations of the `ConsentCheckerInterface`, namely the `DenyAllConsentChecker` and
+`GrantAllConsentChecker`. You can use these two to provide default consents if a consent management system isn't implemented.
 
 [ico-version]: https://poser.pugx.org/setono/consent-contracts/v/stable
 [ico-license]: https://poser.pugx.org/setono/consent-contracts/license
 [ico-github-actions]: https://github.com/Setono/consent-contracts/workflows/build/badge.svg
-[ico-code-coverage]: https://codecov.io/gh/Setono/consent-contracts/branch/master/graph/badge.svg
-[ico-infection]: https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FSetono%2Fconsent-contracts%2Fmaster
+[ico-code-coverage]: https://codecov.io/gh/Setono/consent-contracts/branch/1.x/graph/badge.svg
 
 [link-packagist]: https://packagist.org/packages/setono/consent-contracts
 [link-github-actions]: https://github.com/Setono/consent-contracts/actions
 [link-code-coverage]: https://codecov.io/gh/Setono/consent-contracts
-[link-infection]: https://dashboard.stryker-mutator.io/reports/github.com/Setono/consent-contracts/master
