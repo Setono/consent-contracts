@@ -18,6 +18,9 @@ final class DenyAllConsentCheckerTest extends TestCase
         self::assertFalse($checker->isGranted($consent));
     }
 
+    /**
+     * @return list<list<string>>
+     */
     public function getAllConsents(): array
     {
         return [

@@ -18,6 +18,9 @@ final class GrantAllConsentCheckerTest extends TestCase
         self::assertTrue($checker->isGranted($consent));
     }
 
+    /**
+     * @return list<list<string>>
+     */
     public function getAllConsents(): array
     {
         return [
