@@ -4,6 +4,10 @@
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
     errorLevel="1"
+    findUnusedBaselineEntry="true"
+    findUnusedCode="false"
+    findUnusedPsalmSuppress="true"
+    findUnusedVariablesAndParams="true"
 >
     <projectFiles>
         <directory name="src"/>
@@ -15,4 +19,16 @@
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
     </plugins>
+    <issueHandlers>
+        <DeprecatedConstant>
+            <errorLevel type="suppress">
+                <file name="src/Consents.php"/>
+            </errorLevel>
+        </DeprecatedConstant>
+        <DeprecatedClass>
+            <errorLevel type="suppress">
+                <file name="src/Consents.php"/>
+            </errorLevel>
+        </DeprecatedClass>
+    </issueHandlers>
 </psalm>

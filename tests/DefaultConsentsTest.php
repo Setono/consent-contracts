@@ -6,17 +6,17 @@ namespace Setono\Consent;
 
 use PHPUnit\Framework\TestCase;
 
-final class ConsentsTest extends TestCase
+final class DefaultConsentsTest extends TestCase
 {
     /**
      * @test
      */
     public function it_returns_all_consents(): void
     {
-        $consents = Consents::all();
+        $consents = DefaultConsents::all();
         self::assertCount(3, $consents);
 
-        foreach ([Consents::CONSENT_MARKETING, Consents::CONSENT_PREFERENCES, Consents::CONSENT_STATISTICS] as $consent) {
+        foreach ([DefaultConsents::CONSENT_MARKETING, DefaultConsents::CONSENT_FUNCTIONAL, DefaultConsents::CONSENT_STATISTICAL] as $consent) {
             self::assertContains($consent, $consents);
         }
     }

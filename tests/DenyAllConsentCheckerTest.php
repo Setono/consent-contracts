@@ -10,6 +10,7 @@ final class DenyAllConsentCheckerTest extends TestCase
 {
     /**
      * @test
+     *
      * @dataProvider getAllConsents
      */
     public function it_denies_all(string $consent): void
@@ -24,9 +25,9 @@ final class DenyAllConsentCheckerTest extends TestCase
     public function getAllConsents(): array
     {
         return [
-            [Consents::CONSENT_MARKETING],
-            [Consents::CONSENT_PREFERENCES],
-            [Consents::CONSENT_STATISTICS],
+            [DefaultConsents::CONSENT_MARKETING],
+            [DefaultConsents::CONSENT_FUNCTIONAL],
+            [DefaultConsents::CONSENT_STATISTICAL],
             ['random'],
         ];
     }
