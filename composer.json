@@ -11,10 +11,14 @@
         "php": ">=8.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.5",
-        "psalm/plugin-phpunit": "^0.18",
-        "setono/code-quality-pack": "^2.4",
-        "shipmonk/composer-dependency-analyser": "^1.8"
+        "ergebnis/composer-normalize": "^2.50",
+        "phpstan/extension-installer": "^1.4.3",
+        "phpstan/phpstan": "^2.1.46",
+        "phpstan/phpstan-phpunit": "^2.0.16",
+        "phpstan/phpstan-strict-rules": "^2.0.10",
+        "phpunit/phpunit": "^10.5.64 || ^11.5.55",
+        "shipmonk/composer-dependency-analyser": "^1.8.4",
+        "sylius-labs/coding-standard": "^4.5"
     },
     "prefer-stable": true,
     "autoload": {
@@ -30,13 +34,15 @@
     "config": {
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": false,
-            "ergebnis/composer-normalize": true
+            "ergebnis/composer-normalize": true,
+            "phpstan/extension-installer": true
         },
         "sort-packages": true
     },
     "scripts": {
-        "analyse": "psalm",
+        "analyse": "phpstan",
         "check-style": "ecs check",
-        "fix-style": "ecs check --fix"
+        "fix-style": "ecs check --fix",
+        "phpunit": "phpunit"
     }
 }

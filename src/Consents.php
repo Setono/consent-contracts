@@ -12,7 +12,7 @@ class Consents
     public const CONSENT_MARKETING = 'marketing';
 
     /**
-     * @deprecated since 1.1 and will be removed in 2.0. Use \Setono\Consent\DefaultConsents::CONSENT_PREFERENCES instead
+     * @deprecated since 1.1 and will be removed in 2.0. Use \Setono\Consent\DefaultConsents::CONSENT_FUNCTIONAL instead
      */
     public const CONSENT_PREFERENCES = 'preferences';
 

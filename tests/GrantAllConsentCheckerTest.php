@@ -4,16 +4,15 @@ declare(strict_types=1);
 
 namespace Setono\Consent;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 final class GrantAllConsentCheckerTest extends TestCase
 {
-    /**
-     * @test
-     *
-     * @dataProvider getAllConsents
-     */
-    public function it_denies_all(string $consent): void
+    #[Test]
+    #[DataProvider('getAllConsents')]
+    public function it_grants_all(string $consent): void
     {
         $checker = new GrantAllConsentChecker();
         self::assertTrue($checker->isGranted($consent));
@@ -22,7 +21,7 @@ final class GrantAllConsentCheckerTest extends TestCase
     /**
      * @return list<array{0: string}>
      */
-    public function getAllConsents(): array
+    public static function getAllConsents(): array
     {
         return [
             [DefaultConsents::CONSENT_MARKETING],
