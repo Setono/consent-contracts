@@ -2,7 +2,7 @@ name: "build"
 on:
     push:
         branches:
-            - "*.*"
+            - "*.x"
     pull_request: ~
     workflow_dispatch: ~
 
@@ -15,14 +15,14 @@ jobs:
         strategy:
             matrix:
                 php-version:
-                    - "8.1"
+                    - "8.2"
 
                 dependencies:
                     - "highest"
 
         steps:
             -   name: "Checkout"
-                uses: "actions/checkout@v4"
+                uses: "actions/checkout@v7"
 
             -   name: "Setup PHP, with composer and extensions"
                 uses: "shivammathur/setup-php@v2"
@@ -31,7 +31,7 @@ jobs:
                     coverage: "none"
 
             -   name: "Install composer dependencies"
-                uses: "ramsey/composer-install@v3"
+                uses: "ramsey/composer-install@v4"
                 with:
                     dependency-versions: "${{ matrix.dependencies }}"
 
@@ -52,7 +52,6 @@ jobs:
         strategy:
             matrix:
                 php-version:
-                    - "8.1"
                     - "8.2"
                     - "8.3"
                     - "8.4"
@@ -63,7 +62,7 @@ jobs:
 
         steps:
             -   name: "Checkout"
-                uses: "actions/checkout@v4"
+                uses: "actions/checkout@v7"
 
             -   name: "Setup PHP, with composer and extensions"
                 uses: "shivammathur/setup-php@v2"
@@ -72,7 +71,7 @@ jobs:
                     php-version: "${{ matrix.php-version }}"
 
             -   name: "Install composer dependencies"
-                uses: "ramsey/composer-install@v3"
+                uses: "ramsey/composer-install@v4"
                 with:
                     dependency-versions: "${{ matrix.dependencies }}"
 
@@ -87,9 +86,9 @@ jobs:
         strategy:
             matrix:
                 php-version:
-                    - "8.1"
                     - "8.2"
                     - "8.3"
+                    - "8.4"
 
                 dependencies:
                     - "lowest"
@@ -97,7 +96,7 @@ jobs:
 
         steps:
             -   name: "Checkout"
-                uses: "actions/checkout@v4"
+                uses: "actions/checkout@v7"
 
             -   name: "Setup PHP, with composer and extensions"
                 uses: "shivammathur/setup-php@v2"
@@ -106,7 +105,7 @@ jobs:
                     coverage: "none"
 
             -   name: "Install composer dependencies"
-                uses: "ramsey/composer-install@v3"
+                uses: "ramsey/composer-install@v4"
                 with:
                     dependency-versions: "${{ matrix.dependencies }}"
 
@@ -121,7 +120,6 @@ jobs:
         strategy:
             matrix:
                 php-version:
-                    - "8.1"
                     - "8.2"
                     - "8.3"
                     - "8.4"
@@ -132,7 +130,7 @@ jobs:
 
         steps:
             -   name: "Checkout"
-                uses: "actions/checkout@v4"
+                uses: "actions/checkout@v7"
 
             -   name: "Setup PHP, with composer and extensions"
                 uses: "shivammathur/setup-php@v2"
@@ -141,12 +139,12 @@ jobs:
                     coverage: "none"
 
             -   name: "Install composer dependencies"
-                uses: "ramsey/composer-install@v3"
+                uses: "ramsey/composer-install@v4"
                 with:
                     dependency-versions: "${{ matrix.dependencies }}"
 
             -   name: "Run phpunit"
-                run: "vendor/bin/phpunit"
+                run: "composer phpunit"
 
     code-coverage:
         name: "Code Coverage"
@@ -163,7 +161,7 @@ jobs:
 
         steps:
             -   name: "Checkout"
-                uses: "actions/checkout@v4"
+                uses: "actions/checkout@v7"
 
             -   name: "Setup PHP, with composer and extensions"
                 uses: "shivammathur/setup-php@v2"
@@ -172,7 +170,7 @@ jobs:
                     php-version: "${{ matrix.php-version }}"
 
             -   name: "Install composer dependencies"
-                uses: "ramsey/composer-install@v3"
+                uses: "ramsey/composer-install@v4"
                 with:
                     dependency-versions: "${{ matrix.dependencies }}"
 
@@ -180,6 +178,7 @@ jobs:
                 run: "vendor/bin/phpunit --coverage-clover=.build/logs/clover.xml"
 
             -   name: "Send code coverage report to Codecov.io"
-                uses: "codecov/codecov-action@v4"
+                uses: "codecov/codecov-action@v7"
                 with:
                     token: "${{ secrets.CODECOV_TOKEN }}"
+                    files: ".build/logs/clover.xml"

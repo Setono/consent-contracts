@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace Setono\Consent;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 final class DefaultConsentsTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function it_returns_all_consents(): void
     {
         $consents = DefaultConsents::all();
